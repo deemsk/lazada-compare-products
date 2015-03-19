@@ -1,0 +1,68 @@
+<script type="text/template" class="js-Compare-Template">
+
+    <table class="compare__table">
+        <thead>
+            <tr>
+                <th></th>
+                <% for (var i = 0; i < name.length; i++) { %>
+                    <td class="compare__image">
+                        <a href="<%= href[i] %>" target="_blank">
+                            <img src="<%= image[i] %>" alt="<%= name[i] %>"/>
+                        </a>
+                    </td>
+                <% } %>
+            </tr>
+            <tr>
+                <th class="compare__name"></th>
+                <% for (var i = 0; i < name.length; i++) { %>
+                    <td class="compare__name">
+                        <a href="<%= href[i] %>" target="_blank"><%= name[i] %></a>
+                    </td>
+                <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="compare__param-name">
+                    Price
+                </th>
+                <% for (var i = 0; i < name.length; i++) { %>
+                    <td class="compare__param-value compare__param-value_price">
+                        <%= price_special[i] %> (<del><%= price[i] %></del>)
+                    </td>
+                <% } %>
+            </tr>
+
+            <% if (specs) { %>
+                <% _.each(specs, function(spec) { %>
+                
+                    <tr>
+                        <th class="compare__param-name">
+                            <%= spec.name %>
+                        </th>
+            
+                        <% _.each(spec.values, function(value) { %>
+                            <td class="compare__param-value">
+                                <%= value %>
+                            </td>
+                        <% }) %>
+                    </tr>
+                
+                <% }) %>
+            <% } %>
+            
+            <tr>
+                <th class="compare__param-name">
+                    Reviews
+                </th>
+                <% for (var i = 0; i < name.length; i++) { %>
+                    <td class="compare__param-value">
+                        <%= review_count[i] %>
+                    </td>
+                <% } %>
+            </tr>
+            
+        </tbody>
+    </table>
+
+</script>
