@@ -1,7 +1,26 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title= title
+        link(rel='stylesheet', href='/vendor/normalize.css/normalize.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        header.head
+            div.layout
+                img.head__logo(src='/images/logo.png', alt='Lazada')
+                h1.head__title= title
+
+        div.layout
+            block content
+
+        include ../public/templates/compare-template.ejs
+
+        script(src='/vendor/jquery/dist/jquery.js')
+        script(src='/vendor/underscore/underscore.js')
+        script(src='/vendor/backbone/backbone.js')
+
+        script(src='/javascripts/models/product.js')
+        script(src='/javascripts/collections/products.js')
+        script(src='/javascripts/views/products.js')
+        script(src='/javascripts/views/main.js')
+        script(src='/javascripts/app.js')

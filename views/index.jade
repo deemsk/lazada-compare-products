@@ -1,5 +1,40 @@
 extends layout
 
+block title
+    Compare products
+
 block content
-  h1= title
-  p Welcome to #{title}
+    form.compare-form.js-Compare-Form(action='.')
+        div.compare-form__layout
+            div.compare-form__layout-field
+                input.form-control.input-lg.js-Compare-Form-Url(
+                    type='url',
+                    tabindex='1',
+                    placeholder='URL',
+                    required,
+                    autofocus
+                )
+            div.compare-form__layout-field
+                input.form-control.input-lg.js-Compare-Form-Url(
+                    type='url',
+                    tabindex='2',
+                    placeholder='URL',
+                    required
+                )
+            div.compare-form__layout-submit
+                button.btn.btn-block.btn-success.js-Compare-Form-Submit(
+                    type='submit',
+                    value='Compare',
+                    tabindex='3'
+                ) Compare
+
+        div.compare-form__error.hidden.js-Compare-Form-Error
+
+        ul.compare-form__links
+            li.compare-form__links-item
+                span.pseudo-link.js-Compare-Form-Get-Examples Get examples
+            li.compare-form__links-item
+                span.pseudo-link.js-Compare-Form-Clear Clear form
+
+
+    div.compare.hidden.js-Compare-Products-Container
