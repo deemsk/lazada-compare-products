@@ -31,3 +31,6 @@ npm-debug.log
 
 # Bower packages directory
 vendor
+
+# Generated CSS files
+public/stylesheets/*.css

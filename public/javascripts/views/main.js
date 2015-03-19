@@ -65,7 +65,7 @@ app.MainView = (function($) {
             app.products.fetch({
                 data: $.param({
                     url: this.$urls.get().map(function(input) {
-                        return input.value.trim();
+                        return $.trim(input.value);
                     })
                 }, true)
             });
