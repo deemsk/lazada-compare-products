@@ -1,8 +1,177 @@
+@import 'variables.less';
+@import 'mixins.less';
+
+html {
+    color: #222;
+    font: 1em/1.4 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
+    }
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+    background: #F1F1F1;
+    padding: 0 0 80px;
+    }
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    }
+.invisible {
+    visibility: hidden;
+    }
+.clearfix {
+    .clearfix();
+    }
+
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
 
 a {
-  color: #00B7FF;
+    color: #5b79b9;
+    }
+a:hover {
+    color: #199cb7;
+    text-decoration: underline;
+    }
+.pseudo-link {
+    border-bottom: 1px dotted;
+    cursor: pointer;
 }
+
+
+/* ==========================================================================
+   Page Layout
+   ========================================================================== */
+
+.layout {
+    width: 1000px;
+    margin: auto;
+}
+
+
+/* ==========================================================================
+   Page Header
+   ========================================================================== */
+
+.head {
+    .box-sizing(border-box);
+    padding: 20px 0;
+    min-height: 100px;
+    background: #183546;
+    &:extend(.clearfix all);
+    }
+    .head__logo {
+        float: right;
+        width: 100px;
+        margin: 15px 0 0;
+        }
+    .head__title {
+        margin: 0;
+        line-height: 60px;
+        color: #FFF;
+        }
+
+
+/* ==========================================================================
+   Compare Products
+   ========================================================================== */
+
+.compare-form {
+    margin: 2em 0;
+    }
+    .compare-form__layout {
+        &:extend(.clearfix all);
+        }
+        .compare-form__layout-field {
+            .box-sizing(border-box);
+            float: left;
+            width: 44%;
+            padding-right: 5px;
+            }
+        .compare-form__layout-submit {
+            float: right;
+            width: 12%;
+            }
+        .compare-form__links {
+            list-style: none;
+            margin: 0.8em 0 0;
+            padding: 0;
+            font-size: 14px;
+            }
+            .compare-form__links-item {
+                display: inline-block;
+                margin-right: 1.2em;
+                }
+        .compare-form__error {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0.5em 0 1.2em;
+            color: #F00;
+        }
+
+   
+/* ==========================================================================
+   Compare Products
+   ========================================================================== */
+
+.compare {
+    padding: 2em 1em;
+    background: #FFF;
+    border-radius: 5px;
+    }
+.compare_loading {
+    .box-sizing(border-box);
+    min-height: 250px;
+    background: #F9F9F9 url(/images/ajax-loader_large.gif) center no-repeat;
+    }
+    .compare__table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+        .compare__image,
+        .compare__name,
+        .compare__param-name,
+        .compare__param-value {
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 13px;
+            vertical-align: top;
+        }
+        .compare__image {
+            height: 200px;
+            background: url(/images/ajax-loader_middle.gif) no-repeat center center;
+            }
+            .compare__image img {
+                height: 100%;
+                }
+        .compare__name {
+            padding-top: 1em;
+            padding-bottom: 1.2em;
+            border-bottom: 1px solid #E1E1E1;
+            font-size: 18px;
+            font-weight: bold;
+            }
+            .compare__name A {
+                text-decoration: none;
+                }
+        .compare__param-name,
+        .compare__param-value {
+            padding-top: 0.6em;
+            padding-bottom: 0.6em;
+            text-align: left;
+            }
+        .compare__param-value {
+            width: 35%;
+            }
+        .compare__param-value_price {
+            font-weight: bold;
+            font-size: 15px;
+            }
+
+
+
+@import 'forms.less';
