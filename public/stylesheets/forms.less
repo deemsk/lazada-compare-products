@@ -1,41 +1,54 @@
+@input-border:                #ccc;
+@line-height-large:           1.3333333; // extra decimals for Win 8.1 Chrome
+@font-size-large:             18px;
+@padding-large-vertical:      10px;
+@padding-large-horizontal:    16px;
+@input-border-radius-large:   6px;
+@input-border-focus:          #66afe9;
+@input-color-placeholder:     #999;
+@state-danger-text:           #a94442;
+@btn-success-color:           #fff;
+@btn-success-bg:              #5cb85c;
+@btn-success-border:          darken(#5cb85c, 5%);
+@border-radius-large:         6px;
+
+
+
 /* ==========================================================================
    Form field
    ========================================================================== */
 
 .form-control {
     display: block;
-    width: 100%;
-    height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-    padding: @padding-base-vertical @padding-base-horizontal;
-    font-size: @font-size-base;
-    line-height: @line-height-base;
-    color: @input-color;
-    background-color: @input-bg;
-    border: 1px solid @input-border;
-    border-radius: @input-border-radius;
-
-    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
     .box-sizing(border-box);
+
+    width: 100%;
+    height: 46px;
+    padding: @padding-large-vertical @padding-large-horizontal;
+    
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+    color: #555;
+
+    background-color: #fff;
+    border: 1px solid @input-border;
+    border-radius: @input-border-radius-large;
+
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
     .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
     .form-control-focus();
     .placeholder();
 
-    // Disabled and read-only inputs
-    &[disabled],
-    &[readonly] {
-        background-color: @input-bg-disabled;
+    &[disabled] {
+        cursor: not-allowed;
+        background-color: #EEE;
         opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
         }
-
-    &[disabled] {
-        cursor: @cursor-disabled;
-        }
     }
-
 .form-control_error {
     border-color: @state-danger-text;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
+    
     &:focus {
         border-color: darken(@state-danger-text, 10%);
         @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@state-danger-text, 20%);
@@ -51,20 +64,26 @@
 .btn {
     display: inline-block;
     margin-bottom: 0; // For input.btn
-    font-weight: @btn-font-weight;
+    padding: @padding-large-vertical @padding-large-horizontal;
+    
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+    font-weight: normal;
     text-align: center;
+    color: @btn-success-color;
+    
+    background-color: @btn-success-bg;
+    border: 1px solid @btn-success-border;
+    border-radius: @border-radius-large;
+
     vertical-align: middle;
     touch-action: manipulation;
     cursor: pointer;
     background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-    border: 1px solid transparent;
-    white-space: nowrap;
 
-    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+    white-space: nowrap;
     .user-select(none);
 
-    &,
     &:active,
     &.active {
         &:focus,
@@ -75,31 +94,32 @@
 
     &:hover,
     &:focus,
-    &.focus {
-        color: @btn-default-color;
-        text-decoration: none;
-        }
+    &:active {
+      color: @btn-success-color;
+      background-color: darken(@btn-success-bg, 10%);
+          border-color: darken(@btn-success-border, 12%);
+    }
 
-    &:active,
-    &.active {
+    &:active {
         outline: 0;
         background-image: none;
         .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
         }
 
-    &.disabled,
     &[disabled] {
-        cursor: @cursor-disabled;
+        cursor: not-allowed;
         pointer-events: none; // Future-proof disabling of clicks
         .opacity(.65);
         .box-shadow(none);
+        
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: @btn-success-bg;
+            border-color: @btn-success-border;
+            }
+        }
     }
-}
-
-
-// Block button
-// --------------------------------------------------
-
 .btn_block {
     display: block;
     width: 100%;
