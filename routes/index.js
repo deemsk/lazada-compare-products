@@ -62,11 +62,6 @@ function parseData(data) {
         }
 	});
 
-	var rating = $('#rating .itm-ratRating').css('width');
-	if (rating) {
-		result.rating = rating.replace(/\D*/g, '');
-	}
-
 	return result;
 }
 
